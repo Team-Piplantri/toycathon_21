@@ -12,7 +12,7 @@
 5) `pip install -r requirements.txt`
 6) `cd react-client`
 7) `npm install`
-8) `npm build`
+8) `npm run build`
 
 Start Development Server<br>
 ---
@@ -27,5 +27,5 @@ Running Only React-Client<br>
 2) `npm start`
 
 
-#### Development Commits Must be made in Development Branch
+#### Development Commits Must be made in Development Branch Only
 
