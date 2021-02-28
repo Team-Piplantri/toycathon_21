@@ -24,7 +24,8 @@ urlpatterns = [
     path('',TemplateView.as_view(template_name='index.html')),
 
     #API Endpoints
+    path('api/', include('profiles.urls')),
 ]
 
 #Redirecting all URL Matches to index.html
-urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name='index.html'))]
+# urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name='index.html'))]
