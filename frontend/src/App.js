@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 
+import axiosInstance from "./axiosApi";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Hello from "./components/Hello";
@@ -31,10 +32,16 @@ class App extends Component {
       <div className="site">
         <nav>
           <Link className={"nav-link"} to={"/"}>Home</Link>
-          <Link className={"nav-link"} to={"/login/"}>Login</Link>
-          <Link className={"nav-link"} to={"/signup/"}>Signup</Link>
-          <button onClick={this.handleLogout}>Logout</button>
-          <Link className={"nav-link"} to={"/hello/"}>Hello</Link>
+          {localStorage.getItem('access_token') == null ?
+            <div>
+              <Link className={"nav-link"} to={"/login/"}>Login</Link>
+              <Link className={"nav-link"} to={"/signup/"}>Signup</Link>
+            </div>:
+            <div>
+              <button onClick={this.handleLogout}>Logout</button>
+              <Link className={"nav-link"} to={"/hello/"}>Hello</Link>
+            </div>
+          }
         </nav>
 
         <main>

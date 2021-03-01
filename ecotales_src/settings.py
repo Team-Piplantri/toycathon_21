@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'frontend.apps.FrontendConfig',
     #External
     'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
 AUTH_USER_MODEL = "profiles.CustomUser"
