@@ -4,14 +4,15 @@
 ---
 *Requirements:- Python 3.8+ and npm*<br>
 1) `git clone https://github.com/Team-Piplantri/toycathon-2021`
-(For Contrituber: Use your Forked URL) 
-2) `cd toycathon-2021`
-3) `python -m venv env`
-4) `source env/bin/activate` (Mac/Linux)<br>
+(For Contrituber: Use your Forked URL)
+2) `git branch -a`
+3) `cd toycathon-2021`
+4) `python -m venv env`
+5) `source env/bin/activate` (Mac/Linux)<br>
    `env/Scripts/activate.ps1` (Windows-Powershell)
-5) `pip install -r requirements.txt`
-6) `npm install`
-7) `npm run build`
+6) `pip install -r requirements.txt`
+7) `npm install`
+8) `npm run build`
 
 Start Development Server<br>
 ---
