@@ -10,21 +10,16 @@
 4) `source env/bin/activate` (Mac/Linux)<br>
    `env/Scripts/activate.ps1` (Windows-Powershell)
 5) `pip install -r requirements.txt`
-6) `cd react-client`
-7) `npm install`
-8) `npm run build`
+6) `npm install`
+7) `npm run build`
 
 Start Development Server<br>
 ---
 Running Django Server (With React-Client)
 1) `source env/bin/activate` (Mac/Linux)<br>
    `env/Scripts/activate.ps1` (Windows-Powershell)
-2) `python manage.py runserver`
-
-Running Only React-Client<br>
----
-1) `cd react-client`
-2) `npm start`
+2) `npm build` (Re-Build Everytime when Changes are made in React"
+3) `python manage.py runserver`
 
 
 #### Development Commits Must be made in Development Branch Only
