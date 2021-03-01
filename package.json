@@ -1,0 +1,32 @@
+{
+  "name": "toycathon-2021",
+  "version": "1.0.0",
+  "description": "**Local Setup** --- *Requirements:- Python 3.8+ and npm*<br> 1) `git clone https://github.com/Team-Piplantri/toycathon-2021` (For Contrituber: Use your Forked URL)  2) `cd toycathon-2021` 3) `python -m venv env` 4) `source env/bin/activate` (Mac/Linux)<br>    `env/Scripts/activate.ps1` (Windows-Powershell) 5) `pip install -r requirements.txt` 6) `cd react-client` 7) `npm install` 8) `npm run build`",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx webpack --config ./webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Team-Piplantri/toycathon-2021.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Team-Piplantri/toycathon-2021/issues"
+  },
+  "homepage": "https://github.com/Team-Piplantri/toycathon-2021#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}

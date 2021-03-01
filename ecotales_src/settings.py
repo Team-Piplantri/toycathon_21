@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #Local
     'profiles.apps.ProfilesConfig',
+    'frontend.apps.FrontendConfig',
     #External
     'rest_framework',
 ]
@@ -88,7 +89,7 @@ ROOT_URLCONF = 'ecotales_src.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'react-client/build'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -153,7 +154,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#Development Connection React Static Files
-STATICFILES_DIRS = [
-    BASE_DIR / 'react-client/build/static',
-]
