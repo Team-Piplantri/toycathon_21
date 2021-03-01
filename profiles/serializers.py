@@ -26,18 +26,18 @@ class CustomUserSerializer(serializers.ModelSerializer):
         extra_kwargs = {'password': {'write_only': True},'password1': {'write_only': True}}
 
     def create(self, validated_data):
-        username = validated_data.pop('username',None)
+        username = validated_data.get('username',None)
         user_list = CustomUser.objects.filter(username=username)
         if(user_list.exists()):
             raise serializers.ValidationError({"Error-User":"User already Exists!"})
 
-        password = validated_data.pop('password', None)
+        password = validated_data.get('password', None)
         password1 = validated_data.pop('password1',None)
 
         if(password!=password1):
             raise serializers.ValidationError({"Error-Password":"Password do not Match!"})
-
-        instance = self.Meta.model(**validated_data)  # as long as the fields are the same, we can just use this
+        
+        instance = self.Meta.model(**validated_data)
         if password is not None:
             instance.set_password(password)
         instance.save()
