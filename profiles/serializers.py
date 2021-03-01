@@ -18,14 +18,25 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 class CustomUserSerializer(serializers.ModelSerializer):
     username = serializers.CharField()
     password = serializers.CharField(min_length=8, write_only=True)
+    password1 = serializers.CharField(min_length=8,write_only=True)
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'password')
-        extra_kwargs = {'password': {'write_only': True}}
+        fields = ('username', 'password','password1')
+        extra_kwargs = {'password': {'write_only': True},'password1': {'write_only': True}}
 
     def create(self, validated_data):
+        username = validated_data.pop('username',None)
+        user_list = CustomUser.objects.filter(username=username)
+        if(user_list.exists()):
+            raise serializers.ValidationError({"Error-User":"User already Exists!"})
+
         password = validated_data.pop('password', None)
+        password1 = validated_data.pop('password1',None)
+
+        if(password!=password1):
+            raise serializers.ValidationError({"Error-Password":"Password do not Match!"})
+
         instance = self.Meta.model(**validated_data)  # as long as the fields are the same, we can just use this
         if password is not None:
             instance.set_password(password)
