@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axiosInstance from "../axiosApi";
 
-class Hello extends Component {
+class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,7 +21,6 @@ class Hello extends Component {
             return message;
         }catch(error){
             console.log("Error: ", JSON.stringify(error, null, 4));
-            throw error;
         }
     }
 
@@ -33,10 +32,10 @@ class Hello extends Component {
     render(){
         return (
             <div>
-                <p>{this.state.message}</p>
+                <p>message: {this.state.message}</p>
             </div>
         )
     }
 }
 
-export default Hello;
+export default Home;

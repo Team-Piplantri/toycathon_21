@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import axiosInstance from "../axiosApi";
+import {Redirect} from 'react-router-dom';
+
+import UserContext from '../UserContext';
 
 class Signup extends Component{
     constructor(props){
@@ -7,11 +10,17 @@ class Signup extends Component{
         this.state = {
             username: "",
             password: "",
-            password1:""
+            password1:"",
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        if(localStorage.getItem('access_token')){
+            this.setState({isLogin:true});
+        }
     }
 
     handleChange(event) {
@@ -26,13 +35,16 @@ class Signup extends Component{
                 password: this.state.password,
                 password1: this.state.password1,
             });
-            return response;
+            this.props.history.push('/login');
         } catch (error) {
              console.log(error.stack);
         }
     }
 
     render() {
+        if(this.context.value{
+            return <Redirect to='/'/>;
+        }
         return (
             <div>
                 Signup
@@ -58,4 +70,7 @@ class Signup extends Component{
         )
     }
 }
+
+Signup.contextType = UserContext;
+
 export default Signup;

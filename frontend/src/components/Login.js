@@ -1,19 +1,29 @@
 import React, { Component } from "react";
 import axiosInstance from "../axiosApi";
+import {Redirect} from 'react-router-dom';
+
+import UserContext from '../UserContext';
 
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = { username: "", password: "" };
-
+        this.state = { username: "", password: ""};
+        
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        if(localStorage.getItem('access_token')){
+            this.setState({isLogin:true});
+        }
+    }
+  
+    
     handleChange(event) {
         this.setState({ [event.target.name]: event.target.value });
     }
-
+    
     async handleSubmit(event) {
         event.preventDefault();
         try {
@@ -24,13 +34,18 @@ class Login extends Component {
             axiosInstance.defaults.headers['Authorization'] = "JWT " + response.data.access;
             localStorage.setItem('access_token', response.data.access);
             localStorage.setItem('refresh_token', response.data.refresh);
-            return response.data;
+            
+            this.context.setValue(true);
+            return response;
         } catch (error) {
             throw error;
         }
     }
-
+    
     render() {
+        if(this.context.value){
+            return <Redirect to='/'/>;
+        }
         return (
             <div>Login
                 <form onSubmit={this.handleSubmit}>
@@ -48,4 +63,7 @@ class Login extends Component {
         )
     }
 }
+
+Login.contextType = UserContext;
+
 export default Login;

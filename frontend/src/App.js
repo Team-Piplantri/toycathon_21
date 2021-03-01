@@ -1,60 +1,58 @@
 import React, { Component } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
-import axiosInstance from "./axiosApi";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import Hello from "./components/Hello";
+import NavBar from "./components/NavBar";
+import Home from "./components/Home";
+
+import UserContext from "./UserContext";
+
+function requireAuth(nextState, replaceState) {
+  if (localStorage.getItem('access_token') == null) {
+    replaceState({ nextPathname: nextState.location.pathname }, '/login')
+  }
+}
+
 
 class App extends Component {
-  constructor() {
-    super();
-    this.handleLogout = this.handleLogout.bind(this);
+  constructor(props) {
+    super(props);
+    this.state = { isLogin: false };
+    this.setValue = this.setValue.bind(this);
   }
 
-  async handleLogout() {
-    try {
-      const response = await axiosInstance.post('/blacklist/', {
-        "refresh_token": localStorage.getItem("refresh_token")
-      });
-      localStorage.removeItem('access_token');
-      localStorage.removeItem('refresh_token');
-      axiosInstance.defaults.headers['Authorization'] = null;
-      return response;
+  componentDidMount() {
+    if (localStorage.getItem('access_token')) {
+      this.setState({ isLogin: true });
     }
-    catch (e) {
-      console.log(e);
-    };
   }
+
+  setValue(newValue) {
+    this.setState({ isLogin: newValue });
+  }
+
 
   render() {
     return (
-      <div className="site">
-        <nav>
-          <Link className={"nav-link"} to={"/"}>Home</Link>
-          {localStorage.getItem('access_token') == null ?
-            <div>
-              <Link className={"nav-link"} to={"/login/"}>Login</Link>
-              <Link className={"nav-link"} to={"/signup/"}>Signup</Link>
-            </div>:
-            <div>
-              <button onClick={this.handleLogout}>Logout</button>
-              <Link className={"nav-link"} to={"/hello/"}>Hello</Link>
-            </div>
-          }
-        </nav>
 
-        <main>
-          <h1>Its Toycathon'21...</h1>
-          <Switch>
-            <Route exact path={"/login/"} component={Login} />
-            <Route exact path={"/signup/"} component={Signup} />
-            <Route exact path={"/hello/"} component={Hello} />
-            <Route path={"/"} render={() => <div>Home again</div>} />
-          </Switch>
-        </main>
+        <div className="site">
+          <UserContext.Provider value={{value:this.state.isLogin,setValue:this.setValue}}>
 
-      </div>
+          <NavBar />
+
+          <main>
+            <h1>Its Toycathon'21...</h1>
+            <Switch>
+              <Route exact path={"/login/"} component={Login} />
+              <Route exact path={"/signup/"} component={Signup} />
+              <Route path={"/"} onEnter={requireAuth} component={Home} />
+            </Switch>
+          </main>
+
+          </UserContext.Provider>
+
+        </div>
     );
   }
 }
