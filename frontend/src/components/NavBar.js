@@ -19,7 +19,6 @@ class NavBar extends Component {
           localStorage.removeItem('refresh_token');
           axiosInstance.defaults.headers['Authorization'] = null;
           this.context.setValue(false);
-        //   this.props.history.push('/');          
         }
         catch (e) {
           console.log(e);

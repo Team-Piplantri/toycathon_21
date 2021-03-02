@@ -42,7 +42,7 @@ class Signup extends Component{
     }
 
     render() {
-        if(this.context.value{
+        if(this.context.value){
             return <Redirect to='/'/>;
         }
         return (
