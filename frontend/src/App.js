@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Logout from './components/Logout';
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 
@@ -46,6 +47,7 @@ class App extends Component {
             <Switch>
               <Route exact path={"/login/"} component={Login} />
               <Route exact path={"/signup/"} component={Signup} />
+              <Route exact path={"/logout/"} component={Logout} />
               <Route path={"/"} onEnter={requireAuth} component={Home} />
             </Switch>
           </main>

@@ -2,8 +2,12 @@
     background-color: rgb(172, 118, 226);
 }
 
-.nav-link{
-    color:white;
-    border: 1px solid white;
-    padding: 1em;
+
+main{
+    margin-top: 150px;
+}
+
+
+.logout-form{
+    text-align: center;
 }

@@ -1,99 +1,17 @@
-// import React, { Component } from "react";
-// import axiosInstance from "../axiosApi";
-// import {Link} from 'react-router-dom';
+import React, { useState, useEffect, useContext } from "react";
+import {AppBar,Toolbar,Typography,makeStyles,IconButton,Drawer,Link,MenuItem,} from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
+import { Link as RouterLink } from "react-router-dom";
+import HomeIcon from '@material-ui/icons/Home';
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import CreateIcon from '@material-ui/icons/Create';
 
-// import UserContext from '../UserContext';   
+import UserContext from '../UserContext';   
 
-// class NavBar extends Component {    
-//     constructor(props) {
-//         super(props);
-//         this.handleLogout = this.handleLogout.bind(this);
-//     }
 
-//     async handleLogout() {
-//         try {
-//           const response = await axiosInstance.post('/blacklist/', {
-//             "refresh_token": localStorage.getItem("refresh_token")
-//           });
-//           localStorage.removeItem('access_token');
-//           localStorage.removeItem('refresh_token');
-//           axiosInstance.defaults.headers['Authorization'] = null;
-//           this.context.setValue(false);
-//         }
-//         catch (e) {
-//           console.log(e);
-//         };
-        
-//       }
-
-//     render() {
-//         if (this.context.value) {
-//             return (
-//                 <div>
-//                     <Link className={"nav-link"} to={"/"}>Home</Link>
-//                     <button onClick={this.handleLogout}>Logout</button>
-//                 </div>
-//             );
-//         }
-//         else {
-//             return (
-//                 <div>
-//                     <Link className={"nav-link"} to={"/"}>Home</Link>
-//                     <Link className={"nav-link"} to={"/login/"}>Login</Link>
-//                     <Link className={"nav-link"} to={"/signup/"}>Signup</Link>
-//                 </div>
-//             );
-//         }
-//     }
-// }
-
-// NavBar.contextType = UserContext;
-
-// export default NavBar;
-
-import {
-    AppBar,
-    Toolbar,
-    Typography,
-    makeStyles,
-    Button,
-    IconButton,
-    Drawer,
-    Link,
-    MenuItem,
-  } from "@material-ui/core";
-  import MenuIcon from "@material-ui/icons/Menu";
-  import React, { useState, useEffect } from "react";
-  import { Link as RouterLink } from "react-router-dom";
-  import HomeIcon from '@material-ui/icons/Home';
-  import VpnKeyIcon from '@material-ui/icons/VpnKey';
-  import CreateIcon from '@material-ui/icons/Create';
-  
-  const headersData = [
-    {
-      label: "Home",
-      href: "#",
-      tag:<HomeIcon />,
-    },
-    {
-      label: "Login",
-      href: "/login",
-      tag:<VpnKeyIcon />,
-    },
-    {
-      label: "Sign Up",
-      href: "/signup",
-      tag:<CreateIcon />,
-    },
-    // {
-    //   label: "Log Out",
-    //   href: "/logout",
-    // },
-  ];
-  
   const useStyles = makeStyles(() => ({
     header: {
-      backgroundColor: "#03A7CC",
+      backgroundColor: "#1976d2",
       paddingRight: "79px",
       paddingLeft: "118px",
       "@media (max-width: 900px)": {
@@ -121,13 +39,29 @@ import {
     },
   }));
   
-  export default function Header() {
+  export default function NavBar() {
+
+    const userLogValue = useContext(UserContext);
     const { header, logo, menuButton, toolbar, drawerContainer } = useStyles();
   
     const [state, setState] = useState({
       mobileView: false,
       drawerOpen: false,
     });
+
+    let headersData = [];
+    headersData.push({label: "Home",href: "/",tag:<HomeIcon />,});
+
+    if(!userLogValue.value){
+        headersData.push({label: "Login",href: "/login/",tag:<VpnKeyIcon />,});
+
+        headersData.push({label: "Sign Up",href: "/signup/",tag:<CreateIcon />,});
+       }
+       else {
+
+        headersData.push({label: "Log Out", href: "/logout/",},);
+        
+       }  
   
     const { mobileView, drawerOpen } = state;
   
@@ -151,6 +85,9 @@ import {
         </Toolbar>
       );
     };
+
+
+     
   
     const displayMobile = () => {
       const handleDrawerOpen = () =>
