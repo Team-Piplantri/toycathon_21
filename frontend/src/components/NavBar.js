@@ -151,9 +151,6 @@ import UserContext from '../UserContext';
     const getMenuButtons = () => {
       return headersData.map(({ label, href ,tag}) => {
         return (
-          // <Button>
-          //   <HomeIcon />
-          // </Button>
           <IconButton
             {...{
               key: label,
