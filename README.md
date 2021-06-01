@@ -6,9 +6,10 @@
 1) `git clone https://github.com/Team-Piplantri/toycathon_21.git`
 (For Contrituber: Use your Forked URL)
 2) `cd toycathon_21`
-3) `git branch -a`
-4) `python -m venv env`
-5) `source env/bin/activate` (Mac/Linux)<br>
+3) `git checkout development`
+4) `git pull origin development`
+5) `python -m venv env`
+6) `source env/bin/activate` (Mac/Linux)<br>
    `env/Scripts/activate.ps1` (Windows-Powershell)
 6) `pip install -r requirements.txt`
 7) `npm install`
