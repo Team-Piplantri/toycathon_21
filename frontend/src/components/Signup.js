@@ -143,22 +143,22 @@ class Signup extends Component{
                                 <RadioGroup name="q1" row onChange={this.handleChange}>
                                     <FormControlLabel
                                         label="Agree Strongly"
-                                        value="4"
-                                        control={<Radio />}
-                                    />
-                                    <FormControlLabel
-                                        label="Agree"
-                                        value="3"
-                                        control={<Radio />}
-                                    />
-                                    <FormControlLabel
-                                        label="Disagree Strongly"
                                         value="2"
                                         control={<Radio />}
                                     />
                                     <FormControlLabel
-                                        label="Disagree"
+                                        label="Agree"
                                         value="1"
+                                        control={<Radio />}
+                                    />
+                                    <FormControlLabel
+                                        label="Disagree"
+                                        value="-1"
+                                        control={<Radio />}
+                                    />
+                                    <FormControlLabel
+                                        label="Disagree Strongly"
+                                        value="-2"
                                         control={<Radio />}
                                     />
                                 </RadioGroup>
@@ -171,22 +171,22 @@ class Signup extends Component{
                                 <RadioGroup name="q2" row onChange={this.handleChange}>
                                     <FormControlLabel
                                         label="Agree Strongly"
-                                        value="4"
-                                        control={<Radio />}
-                                    />
-                                    <FormControlLabel
-                                        label="Agree"
-                                        value="3"
-                                        control={<Radio />}
-                                    />
-                                    <FormControlLabel
-                                        label="Disagree Strongly"
                                         value="2"
                                         control={<Radio />}
                                     />
                                     <FormControlLabel
-                                        label="Disagree"
+                                        label="Agree"
                                         value="1"
+                                        control={<Radio />}
+                                    />
+                                    <FormControlLabel
+                                        label="Disagree"
+                                        value="-1"
+                                        control={<Radio />}
+                                    />
+                                    <FormControlLabel
+                                        label="Disagree Strongly"
+                                        value="-2"
                                         control={<Radio />}
                                     />
                                 </RadioGroup>
@@ -199,22 +199,22 @@ class Signup extends Component{
                                 <RadioGroup name="q3" row onChange={this.handleChange}> 
                                     <FormControlLabel
                                         label="Agree Strongly"
-                                        value="4"
-                                        control={<Radio />}
-                                    />
-                                    <FormControlLabel
-                                        label="Agree"
-                                        value="3"
-                                        control={<Radio />}
-                                    />
-                                    <FormControlLabel
-                                        label="Disagree Strongly"
                                         value="2"
                                         control={<Radio />}
                                     />
                                     <FormControlLabel
-                                        label="Disagree"
+                                        label="Agree"
                                         value="1"
+                                        control={<Radio />}
+                                    />
+                                    <FormControlLabel
+                                        label="Disagree"
+                                        value="-1"
+                                        control={<Radio />}
+                                    />
+                                    <FormControlLabel
+                                        label="Disagree Strongly"
+                                        value="-2"
                                         control={<Radio />}
                                     />
                                 </RadioGroup>
@@ -227,22 +227,22 @@ class Signup extends Component{
                                 <RadioGroup name="q4" row onChange={this.handleChange}>
                                     <FormControlLabel
                                         label="Agree Strongly"
-                                        value="4"
-                                        control={<Radio />}
-                                    />
-                                    <FormControlLabel
-                                        label="Agree"
-                                        value="3"
-                                        control={<Radio />}
-                                    />
-                                    <FormControlLabel
-                                        label="Disagree Strongly"
                                         value="2"
                                         control={<Radio />}
                                     />
                                     <FormControlLabel
-                                        label="Disagree"
+                                        label="Agree"
                                         value="1"
+                                        control={<Radio />}
+                                    />
+                                    <FormControlLabel
+                                        label="Disagree"
+                                        value="-1"
+                                        control={<Radio />}
+                                    />
+                                    <FormControlLabel
+                                        label="Disagree Strongly"
+                                        value="-2"
                                         control={<Radio />}
                                     />
                                 </RadioGroup>
@@ -255,22 +255,22 @@ class Signup extends Component{
                                 <RadioGroup name="q5" row onChange={this.handleChange}>
                                     <FormControlLabel
                                         label="Agree Strongly"
-                                        value="4"
-                                        control={<Radio />}
-                                    />
-                                    <FormControlLabel
-                                        label="Agree"
-                                        value="3"
-                                        control={<Radio />}
-                                    />
-                                    <FormControlLabel
-                                        label="Disagree Strongly"
                                         value="2"
                                         control={<Radio />}
                                     />
                                     <FormControlLabel
-                                        label="Disagree"
+                                        label="Agree"
                                         value="1"
+                                        control={<Radio />}
+                                    />
+                                    <FormControlLabel
+                                        label="Disagree"
+                                        value="-1"
+                                        control={<Radio />}
+                                    />
+                                    <FormControlLabel
+                                        label="Disagree Strongly"
+                                        value="-2"
                                         control={<Radio />}
                                     />
                                 </RadioGroup>

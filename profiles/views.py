@@ -32,10 +32,11 @@ class CustomUserCreate(APIView):
             if user:
                 # Initial GDP Calculation
                 gdp = q1+q2+q3+q4+q5
+                net_gdp = (1-(0.05*gdp))*50000000
                 user_info,created = UserInfo.objects.get_or_create(
                     user=user,
                     currency=currency,
-                    gdp = gdp
+                    gdp = net_gdp
                 )
                 data = serializer.data
                 return Response(data, status=status.HTTP_201_CREATED)
