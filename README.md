@@ -3,7 +3,7 @@
 **Local Setup**
 ---
 *Requirements:- Python 3.8+ and npm*<br>
-1) `git clone https://github.com/Team-Piplantri/toycathon-2021`
+1) `git clone https://github.com/Team-Piplantri/toycathon_21.git`
 (For Contrituber: Use your Forked URL)
 2) `git branch -a`
 3) `cd toycathon_21`
