@@ -19,7 +19,7 @@ Start Development Server<br>
 Running Django Server (With React-Client)
 1) `source env/bin/activate` (Mac/Linux)<br>
    `env/Scripts/activate.ps1` (Windows-Powershell)
-2) `npm build` (Re-Build Everytime when Changes are made in React"
+2) `npm run build` (Re-Build Everytime when Changes are made in React"
 3) `python manage.py runserver`
 
 
