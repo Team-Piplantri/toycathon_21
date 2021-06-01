@@ -6,7 +6,7 @@
 1) `git clone https://github.com/Team-Piplantri/toycathon-2021`
 (For Contrituber: Use your Forked URL)
 2) `git branch -a`
-3) `cd toycathon-2021`
+3) `cd toycathon_21`
 4) `python -m venv env`
 5) `source env/bin/activate` (Mac/Linux)<br>
    `env/Scripts/activate.ps1` (Windows-Powershell)
