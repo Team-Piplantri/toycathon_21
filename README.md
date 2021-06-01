@@ -5,8 +5,8 @@
 *Requirements:- Python 3.8+ and npm*<br>
 1) `git clone https://github.com/Team-Piplantri/toycathon_21.git`
 (For Contrituber: Use your Forked URL)
-2) `git branch -a`
-3) `cd toycathon_21`
+2) `cd toycathon_21`
+3) `git branch -a`
 4) `python -m venv env`
 5) `source env/bin/activate` (Mac/Linux)<br>
    `env/Scripts/activate.ps1` (Windows-Powershell)
