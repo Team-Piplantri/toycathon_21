@@ -10,7 +10,7 @@ class CustomUser(AbstractUser):
 
 
 class UserInfo(models.Model):
-    user = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser,on_delete=models.CASCADE,related_name='info')
     currency = models.CharField(max_length=56,blank=True)
     gdp = models.BigIntegerField()
     global_score = models.IntegerField(default=0)
