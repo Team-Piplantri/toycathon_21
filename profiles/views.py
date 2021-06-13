@@ -57,13 +57,6 @@ class LogoutAndBlacklistRefreshTokenForUserView(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-#DEMO VIEW
-class HelloWorldView(APIView):
-    # permission_classes = (permissions.AllowAny,)
-    
-    def get(self, request):
-        return Response(data={"hello":"world"}, status=status.HTTP_200_OK)
-
 
 
 

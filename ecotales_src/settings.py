@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #Local
     'profiles.apps.ProfilesConfig',
     'frontend.apps.FrontendConfig',
+    'modes.apps.ModesConfig',
     #External
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',

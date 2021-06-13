@@ -21,7 +21,8 @@ urlpatterns = [
 
     # API Endpoints
     path('api/', include('profiles.urls')),
-    
+    path('api/modes/',include('modes.urls')),
+
     path('',include('frontend.urls')), # Connecting React-App
 ]
 

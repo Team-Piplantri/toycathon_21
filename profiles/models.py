@@ -13,6 +13,8 @@ class UserInfo(models.Model):
     user = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
     currency = models.CharField(max_length=56,blank=True)
     gdp = models.BigIntegerField()
+    global_score = models.IntegerField(default=0)
+    local_score = models.IntegerField(default=0)
 
     def __str__(self):
         return f"User Info of {self.user.username}"
