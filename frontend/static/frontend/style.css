@@ -6,3 +6,47 @@
 main{
     margin-top: 150px;
 }
+
+#img-title {
+    display: inline;
+    margin-left: 20%;
+    text-align: center;
+  }
+  
+  .choicebtn {
+    margin-left: 15%;
+    margin-top: 10%;
+  }
+  
+  #primarybtn {
+    margin-left: 0%;
+  }
+  .dot {
+    height: 25px;
+    width: 25px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 2%;
+  }
+  #nextbtn{
+      text-align: right;
+  }
+  @media (max-width: 800px) {
+    #img-title {
+      display: block;
+      margin-left: 0;
+    }
+  
+    #primarybtn {
+      margin: 4% auto 4% auto;
+    }
+  
+    .choicebtn {
+      display: block !important;
+      margin: 4% auto 4% auto;
+    }
+    #nextbtn{
+        text-align: center;
+    }
+  }
