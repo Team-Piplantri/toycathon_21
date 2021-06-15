@@ -7,6 +7,10 @@ main{
     margin-top: 150px;
 }
 
+.hide{
+  display: none;
+}
+
 #img-title {
     display: inline;
     margin-left: 20%;
