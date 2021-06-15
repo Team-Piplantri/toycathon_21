@@ -7,9 +7,17 @@ import axiosInstance from "../axiosApi";
 
 
 const SingleQuiz = () => {
+  const initialQuesObj = {
+    answer:0,
+    explanation:"",
+    id:0,
+    ques_image:"",
+    ques_text: ""
+  }
+
   const [quesList,setQuesList] = useState([]);
   const [quesCount,setQuesCount] = useState(0);
-  const [currentQues,setCurrentQues] = useState();
+  const [currentQues,setCurrentQues] = useState(initialQuesObj);
 
   const userLogValue = useContext(UserContext);
   
@@ -75,7 +83,7 @@ const SingleQuiz = () => {
 
       <div style={{ marginTop: "5%" }}>
         <h1>Explanation</h1>
-        <p></p>
+        <p>{currentQues.explanation}</p>
       </div>
     </div>
   )
