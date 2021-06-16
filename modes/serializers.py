@@ -12,3 +12,15 @@ class SingleWordQuizAnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.SingleWordQuizAnswer
         fields = '__all__'
+
+
+class MultipleQuizSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.MultipleQuiz
+        fields = '__all__'
+
+
+class MultipleQuizAnswerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.MultipleQuizAnswer
+        fields = '__all__'

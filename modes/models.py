@@ -25,3 +25,33 @@ class SingleWordQuizAnswer(models.Model):
 
     def __str__(self):
         return f"User:{self.user}, Answer:{self.selected_answer}"
+
+
+class MultipleQuiz(models.Model):
+    """
+    Model for 4 Options Quiz
+    """
+    ques_text = models.CharField(max_length=128)
+    option1 = models.CharField(max_length=56)
+    option2 = models.CharField(max_length=56)
+    option3 = models.CharField(max_length=56)
+    option4 = models.CharField(max_length=56)
+    answer = models.IntegerField(default=0)
+    explanation = models.CharField(max_length=56)
+
+    def __str__(self):
+        ques = self.ques_text[:30]
+        return f"Ques:{ques}"
+
+
+class MultipleQuizAnswer(models.Model):
+    """
+    Model For storing answers of MultipleQuiz
+    """
+    user = models.ForeignKey(UserInfo,on_delete=models.CASCADE)
+    quiz_ques = models.ForeignKey(MultipleQuiz,on_delete=models.CASCADE)
+    selected_answer = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f"User:{self.user}, Answer:{self.selected_answer}"
+
