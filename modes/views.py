@@ -4,8 +4,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 import random
 
-from .models import SingleWordQuiz,SingleWordQuizAnswer,MultipleQuiz,MultipleQuizAnswer
-from .serializers import SingleWordQuizSerializer,SingleWordQuizAnswerSerializer,MultipleQuizSerializer,MultipleQuizAnswerSerializer
+from .models import SingleWordQuiz,SingleWordQuizAnswer,MultipleQuiz,MultipleQuizAnswer,ChanBot
+from .serializers import SingleWordQuizSerializer,SingleWordQuizAnswerSerializer,MultipleQuizSerializer,MultipleQuizAnswerSerializer,ChanBotSerializer
 
 
 class ListSingleQuizQuestionsView(APIView):
@@ -80,4 +80,17 @@ class AnswerMultipleQuizView(APIView):
         answer_obj.save()
         serializer = MultipleQuizAnswerSerializer(answer_obj)
         return Response(data=serializer.data,status=status.HTTP_201_CREATED)
+
+
+class ChanBotView(APIView):
+
+    def get(self,request,format=None):
+        """
+        Returns Random Quote of Chanakya
+        """
+        quote_list = ChanBot.objects.all()
+        quote_object = random.choice(quote_list)
+        serializer = ChanBotSerializer(quote_object)
+        return Response(data=serializer.data,status=status.HTTP_200_OK)
+
 

@@ -55,3 +55,13 @@ class MultipleQuizAnswer(models.Model):
     def __str__(self):
         return f"User:{self.user}, Answer:{self.selected_answer}"
 
+
+class ChanBot(models.Model):
+    """
+    Model for Chanakya Non-Interactive Bot
+    """
+    quote = models.CharField(max_length=128)
+
+    def __str__(self):
+        quote = self.quote[:30]
+        return f"{quote}"

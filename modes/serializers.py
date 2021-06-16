@@ -24,3 +24,9 @@ class MultipleQuizAnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.MultipleQuizAnswer
         fields = '__all__'
+
+
+class ChanBotSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.ChanBot
+        fields = '__all__'
