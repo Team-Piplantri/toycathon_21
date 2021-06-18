@@ -65,3 +65,30 @@ class ChanBot(models.Model):
     def __str__(self):
         quote = self.quote[:30]
         return f"{quote}"
+
+
+class IdleClickerIndustry(models.Model):
+    industry = models.CharField(max_length=56)
+    sector = models.IntegerField(default=0)
+    image = models.URLField()
+    industry_number = models.IntegerField(default=0)
+    manager_name = models.CharField(max_length=56)
+    manager_cost = models.IntegerField()
+
+
+class IdleClickerParameter(models.Model):
+    user = models.ForeignKey(UserInfo,on_delete=models.CASCADE)
+    industry = models.ForeignKey(IdleClickerIndustry,on_delete=models.CASCADE)
+    unlocked = models.BooleanField(default=False) # Industry 1 is always Unlocked, Rest are Locked
+    current_quantity = models.IntegerField(default=0) # Industry 1, default is 1
+    last_buy_time = models.DateTimeField()
+    quantity_bought = models.IntegerField()
+    industry_income = models.BigIntegerField()
+    managed = models.BooleanField(default=False) # Buy Manager to Unlock
+    next_one_buy = models.BigIntegerField()
+    next_ten_buy = models.BigIntegerField()
+    next_hundred_buy = models.BigIntegerField()
+
+
+
+
