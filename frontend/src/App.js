@@ -7,6 +7,7 @@ import Logout from './components/Logout';
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import SingleQuiz from "./components/SingleQuiz";
+import MultipleQuiz from "./components/MultipleQuiz";
 
 import UserContext from "./UserContext";
 
@@ -50,6 +51,7 @@ class App extends Component {
               <Route exact path={"/signup/"} component={Signup} />
               <Route exact path={"/logout/"} component={Logout} />
               <Route exact path={"/single-quiz/"} component={SingleQuiz} />
+              <Route exact path={"/multiple-quiz/"} component={MultipleQuiz} />
               <Route path={"/"} onEnter={requireAuth} component={Home} />
             </Switch>
           </main>

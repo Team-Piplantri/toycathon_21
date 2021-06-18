@@ -57,6 +57,16 @@ const SingleQuiz = () => {
         }
       }
       else{
+        if(currentQues.answer==1){
+          setPrimaryStyle("success");
+        }
+        else if(currentQues.answer==2){
+          setSecondaryStyle("success");
+        }
+        else if(currentQues.answer==3){
+          setTertiaryStyle("success");
+        }
+
         if(answerSelected==1){
           setPrimaryStyle("danger");
         }
@@ -74,7 +84,7 @@ const SingleQuiz = () => {
     }
     
   const changeNextQuestion = (event)=>{
-    if(quesList.length-1==quesCount){ //last question disable button
+    if(quesList.length-2==quesCount){ //last question disable button
       document.querySelector("#changeNextButton").setAttribute("disabled", "");
     }
     document.querySelector("#primarybtn").removeAttribute("disabled", "");
@@ -88,7 +98,7 @@ const SingleQuiz = () => {
     let currentCount = quesCount;
     currentCount+=1;
     setQuesCount(currentCount);
-    setCurrentQues(quesList[quesCount]);
+    setCurrentQues(quesList[currentCount]);
   }
 
   return (

@@ -4,7 +4,7 @@
 
 
 main{
-    margin-top: 150px;
+    margin-top: 70px;
 }
 
 .hide{
@@ -52,5 +52,69 @@ main{
     }
     #nextbtn{
         text-align: center;
+    }
+  }
+  
+  .chan-box{
+    background-color: chartreuse;
+    width: 50%;
+    padding: 2%;
+    text-align: justify;
+    z-index: 5;
+    border: 1px solid black;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    box-shadow: 0 0 10px;
+  }
+  
+  #chanakya img{
+    border-top-right-radius: 2rem;
+    border: 1px solid black;
+    box-shadow: 0 0 10px;
+    border-bottom-right-radius: 2rem;
+  }
+  
+  .close-icon{
+    text-align: right;
+    margin-bottom: 2%;
+  }
+  
+  #float-btn{
+    right: 10%;
+    position: fixed;
+    bottom: 10%;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%; 
+    background-color: blue;
+  }
+  
+  .bochak{
+    position: fixed;
+    top: 20%;
+    display: flex;
+    left: 20%;
+    height: max-content;
+  }
+  
+  #chanakya{
+    height: max-content;
+  }
+  
+  @media(max-width:750px){
+    #chanakya{
+      display: block;
+    }
+  
+    .bochak img{
+      width: 150px;
+      height: max-content;
+    }
+  }
+  
+  @media(max-width:576px){
+    .bochak{
+      left: 2%;
+      right: 2%;
     }
   }
