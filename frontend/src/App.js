@@ -47,7 +47,7 @@ class App extends Component {
           <NavBar />
 
           <main>
-            <h1>Its Toycathon'21...</h1>
+            {/* <h1>Its Toycathon'21...</h1> */}
             <Switch>
               <Route exact path={"/login/"} component={Login} />
               <Route exact path={"/signup/"} component={Signup} />
@@ -56,6 +56,8 @@ class App extends Component {
               <Route exact path={"/multiple-quiz/"} component={MultipleQuiz} />
               <Route exact path={"/idle-clicker/"} component={IdleClicker} />
               <Route exact path={"/special-mode/"} component={SpecialMode} />
+              <Route exact path={"/about/"} component={SpecialMode} />
+              <Route exact path={"/content/"} component={SpecialMode} />
               <Route path={"/"} onEnter={requireAuth} component={Home} />
             </Switch>
           </main>
