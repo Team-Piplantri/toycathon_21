@@ -8,14 +8,18 @@ import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import SingleQuiz from "./components/SingleQuiz";
 import MultipleQuiz from "./components/MultipleQuiz";
+import IdleClicker from "./components/IdleClicker";
+import SpecialMode from "./components/SpecialMode";
+import AboutUs from "./components/AboutUs";
+import ContactForm from "./components/ContactUs";
 
 import UserContext from "./UserContext";
 
-function requireAuth(nextState, replaceState) {
-  if (localStorage.getItem('access_token') == null) {
-    replaceState({ nextPathname: nextState.location.pathname }, '/login')
-  }
-}
+// function requireAuth(nextState, replaceState) {
+//   if (localStorage.getItem('access_token') == null) {
+//     replaceState({ nextPathname: nextState.location.pathname }, '/login')
+//   }
+// }
 
 
 class App extends Component {
@@ -45,14 +49,18 @@ class App extends Component {
           <NavBar />
 
           <main>
-            <h1>Its Toycathon'21...</h1>
+            {/* <h1>Its Toycathon'21...</h1> */}
             <Switch>
               <Route exact path={"/login/"} component={Login} />
               <Route exact path={"/signup/"} component={Signup} />
               <Route exact path={"/logout/"} component={Logout} />
               <Route exact path={"/single-quiz/"} component={SingleQuiz} />
               <Route exact path={"/multiple-quiz/"} component={MultipleQuiz} />
-              <Route path={"/"} onEnter={requireAuth} component={Home} />
+              <Route exact path={"/idle-clicker/"} component={IdleClicker} />
+              <Route exact path={"/special-mode/"} component={SpecialMode} />
+              <Route exact path={"/about/"} component={AboutUs} />
+              <Route exact path={"/contact/"} component={ContactForm} />
+              <Route path={"/"} component={Home} />
             </Switch>
           </main>
 
