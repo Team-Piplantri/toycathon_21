@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import SingleQuiz from "./components/SingleQuiz";
 import MultipleQuiz from "./components/MultipleQuiz";
 import IdleClicker from "./components/IdleClicker";
+import SpecialMode from "./components/SpecialMode";
 
 import UserContext from "./UserContext";
 
@@ -54,6 +55,7 @@ class App extends Component {
               <Route exact path={"/single-quiz/"} component={SingleQuiz} />
               <Route exact path={"/multiple-quiz/"} component={MultipleQuiz} />
               <Route exact path={"/idle-clicker/"} component={IdleClicker} />
+              <Route exact path={"/special-mode/"} component={SpecialMode} />
               <Route path={"/"} onEnter={requireAuth} component={Home} />
             </Switch>
           </main>

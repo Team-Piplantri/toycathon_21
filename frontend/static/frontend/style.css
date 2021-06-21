@@ -118,3 +118,82 @@ main{
       right: 2%;
     }
   }
+
+  .slidecontainer {
+    width: 100%;
+    padding-right: 2%;
+  }
+  
+  .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #6fdb6f;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .slider:hover {
+    opacity: 1;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #04AA6D;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #04AA6D;
+    cursor: pointer;
+  }
+  
+  .stats-badge{
+    background-color: #7fff00;
+    height: 20px;
+    width: 100px;
+    margin: 3% 1% 1% 0;
+  }
+  
+  .manager h4{
+    display: inline;
+  }
+  
+  #managerof{
+    margin-left: 2%;
+  }
+  
+  @media(max-width:576px){
+    .manager h4{
+      display: block;
+    }
+  
+    #managerof{
+      margin-left: 0;
+    }
+  }
+  
+  .myProgress {
+    margin-top: 10px;
+    margin-right: 5px;
+    border-radius: 0.5rem;
+    width: 100%;
+    background-color: #ddd;
+  }
+  
+  .probar {
+    border-radius: 0.5rem;
+    width: 0%;
+    height: 30px;
+    background-color: #7fff00;
+  }

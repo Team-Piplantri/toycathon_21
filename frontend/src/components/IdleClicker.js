@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Button, ButtonGroup, ToggleButton } from "react-bootstrap"
+import { Row, Col, Button, Modal, Badge, ProgressBar, ButtonGroup, ToggleButton } from "react-bootstrap";
 
 import axiosInstance from "../axiosApi";
 
 
 
 function IdleClicker() {
+    const [showStats, setShowStats] = useState(false)
+    const [showManagers, setShowManagers] = useState(false)
+
     const [buyAmt, setBuyAmt] = useState(1);
     const [primaryList, setPrimaryList] = useState([]);
     const [secondaryList, setSecondaryList] = useState([]);
@@ -21,6 +24,122 @@ function IdleClicker() {
         { name: 'Secondary', value: '2' },
         { name: 'Tertiary', value: '3' },
     ];
+
+    var i = 0;
+    const animate = (props) => {
+        if (i == 0) {
+            i = 1;
+            var elem = document.getElementById(props);
+            var width = 1;
+            var id = setInterval(frame, 100);
+            function frame() {
+                if (width >= 100) {
+                    clearInterval(id);
+                    elem.style.width = "0%";
+                    i = 0;
+                } else {
+                    width++;
+                    elem.style.width = width + "%";
+                }
+            }
+        }
+    }
+
+    function Stats(props) {
+        return (
+            <Modal
+                {...props}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                        Stats
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body style={{ textAlign: 'center' }}>
+                    <div>
+                        <Badge className='stats-badge'>Parameter 1</Badge>:<Badge className='stats-badge' style={{ backgroundColor: 'yellow', marginLeft: '1%' }}>value 1</Badge>
+                        <ProgressBar now='10' label='10' />
+                    </div>
+                    <div>
+                        <Badge className='stats-badge'>Parameter 2</Badge>:<Badge className='stats-badge' style={{ backgroundColor: 'yellow', marginLeft: '1%' }}>value 2</Badge>
+                        <ProgressBar now='20' label='20' />
+                    </div>
+                    <div>
+                        <Badge className='stats-badge'>Parameter 3</Badge>:<Badge className='stats-badge' style={{ backgroundColor: 'yellow', marginLeft: '1%' }}>value 3</Badge>
+                        <ProgressBar now='30' label='30' />
+                    </div>
+                    <div>
+                        <Badge className='stats-badge'>Parameter 4</Badge>:<Badge className='stats-badge' style={{ backgroundColor: 'yellow', marginLeft: '1%' }}>value 4</Badge>
+                        <ProgressBar now='40' label='40' />
+                    </div>
+                    <div>
+                        <Badge className='stats-badge'>Parameter 5</Badge>:<Badge className='stats-badge' style={{ backgroundColor: 'yellow', marginLeft: '1%' }}>value 5</Badge>
+                        <ProgressBar now='50' label='50' />
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={props.onHide}>Close</Button>
+                </Modal.Footer>
+            </Modal>
+        );
+    }
+
+    function Managers(props) {
+        return (
+            <Modal
+                {...props}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                        Managers
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className='manager'>
+                        <img style={{ width: '100px', height: '100px', borderRadius: '50px', objectFit: 'contain' }} src='http://images5.fanpop.com/image/photos/31600000/Gus-T-T-Showbizand-etc-Smooth-psych-31699715-185-272.jpg' />
+                        <h4>Gus TT -</h4>
+                        <h4 id='managerof'>Manager of Himashu</h4>
+                        <p>Burton "Gus" Guster is a fictional character on Psych played by American actor Dulé Hill. </p>
+                        <div style={{ textAlign: 'center' }}>
+                            <h5>Cost : $30000</h5>
+                            <Button>Appoint</Button>
+                        </div>
+                    </div>
+                    <hr />
+                    <div className='manager'>
+                        <img style={{ width: '100px', height: '100px', borderRadius: '50px', objectFit: 'contain' }} src='http://images5.fanpop.com/image/photos/31600000/Gus-T-T-Showbizand-etc-Smooth-psych-31699715-185-272.jpg' />
+                        <h4>Gus TT -</h4>
+                        <h4 id='managerof'>Manager of Himashu</h4>
+                        <p>Burton "Gus" Guster is a fictional character on Psych played by American actor Dulé Hill. </p>
+                        <div style={{ textAlign: 'center' }}>
+                            <h5>Cost : $30000</h5>
+                            <Button>Appoint</Button>
+                        </div>
+                    </div>
+                    <hr />
+                    <div className='manager'>
+                        <img style={{ width: '100px', height: '100px', borderRadius: '50px', objectFit: 'contain' }} src='http://images5.fanpop.com/image/photos/31600000/Gus-T-T-Showbizand-etc-Smooth-psych-31699715-185-272.jpg' />
+                        <h4>Gus TT -</h4>
+                        <h4 id='managerof'>Manager of Himashu</h4>
+                        <p>Burton "Gus" Guster is a fictional character on Psych played by American actor Dulé Hill. </p>
+                        <div style={{ textAlign: 'center' }}>
+                            <h5>Cost : $30000</h5>
+                            <Button>Appoint</Button>
+                        </div>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={props.onHide}>Close</Button>
+                </Modal.Footer>
+            </Modal>
+        );
+    }
 
     const IdleClickerUI = (d, params) => {
         return (<div
@@ -53,7 +172,7 @@ function IdleClicker() {
                     <div style={{ textAlign: "center" }}>
                         {d.industry}<br></br>
                         <br></br>
-    
+
                         <Button className="buyBtnChange" onClick={handleBuy} id={params.id} style={{ margin: "auto 0" }} name={buyAmt}>Buy {buyAmt}</Button>
                     </div>
                 </Col>
@@ -65,8 +184,10 @@ function IdleClicker() {
                     Time for 1 Run: 10 sec
                 </Col>
                 <Col sm={12} md={4} style={{ display: "inline-block" }}>
-                    Hi This Manish Pandey,Right Arm Middle Batsman...Favourite Cricketer
-                    is Kevin Pietersen.
+                    <div className="myProgress">
+                        <div id={`${d.id}e`} className='probar'></div>
+                    </div>
+                    <Button onClick={() => animate(`${d.id}e`)} >Click me </Button>
                 </Col>
             </Row>
         </div>);
@@ -106,7 +227,7 @@ function IdleClicker() {
         } else {
             setBuyAmt(1);
         }
-        document.querySelectorAll('.buyBtnChange').forEach((button)=>{
+        document.querySelectorAll('.buyBtnChange').forEach((button) => {
             button.innerHTML = `Buy ${newVal}`;
             button.name = newVal;
         });
@@ -115,7 +236,7 @@ function IdleClicker() {
     const handleBuy = async (event) => {
         requestData = { 'industryParamsId': event.target.id, 'buyAmount': event.target.name };
 
-        const responsePost = await axiosInstance.post("/modes/idle-clicker-params/",requestData)
+        const responsePost = await axiosInstance.post("/modes/idle-clicker-params/", requestData)
         const responseGet = await axiosInstance.get("/modes/idle-clicker-params/")
         setParamsList(responseGet.data);
     }
@@ -152,53 +273,75 @@ function IdleClicker() {
     }
 
     return (
-        <div>
-            <div
-                style={{
-                    backgroundColor: "chartreuse",
-                    textAlign: "center",
-                    padding: "1.5% 0",
-                }}
-            >
-                <Button style={{ width: "85px" }}>Stats</Button>
+        <>
+            {showStats ? (
+                <>
+                    <Stats
+                        show={showStats}
+                        onHide={() => setShowStats(false)}
+                    />
+                </>
+            ) : (
+                <></>
+            )}
+            {showManagers ? (
+                <>
+                    <Managers
+                        show={showManagers}
+                        onHide={() => setShowManagers(false)}
+                    />
+                </>
+            ) : (
+                <></>
+            )}
+            <div>
                 <div
                     style={{
+                        backgroundColor: "chartreuse",
                         textAlign: "center",
-                        display: "inline-block ",
-                        width: "50%",
+                        padding: "1.5% 0",
                     }}
                 >
-                    952,100,111
+                    <Button onClick={() => setShowStats(true)} style={{ width: "85px" }}>Stats</Button>
+                    <div
+                        style={{
+                            textAlign: "center",
+                            display: "inline-block ",
+                            width: "50%",
+                        }}
+                    >
+                        952,100,111
+                    </div>
+                    <div style={{ textAlign: "right", display: "inline-block" }}>
+                        <Button onClick={() => setShowManagers(true)} style={{ width: "85px" }}>Managers</Button>
+                    </div>
                 </div>
-                <div style={{ textAlign: "right", display: "inline-block" }}>
-                     <Button style={{ width: "85px" }}>Managers</Button>
+                <div>
+                    <ButtonGroup toggle>
+                        {radios.map((radio, idx) => (
+                            <ToggleButton
+                                key={idx}
+                                type="radio"
+                                variant="secondary"
+                                name="radio"
+                                value={radio.value}
+                                checked={radioValue === radio.value}
+                                onChange={handleSector}
+                            >
+                                {radio.name}
+                            </ToggleButton>
+                        ))}
+                    </ButtonGroup>
                 </div>
-            </div>
-            <div>
-                <ButtonGroup toggle>
-                    {radios.map((radio, idx) => (
-                        <ToggleButton
-                            key={idx}
-                            type="radio"
-                            variant="secondary"
-                            name="radio"
-                            value={radio.value}
-                            checked={radioValue === radio.value}
-                            onChange={handleSector}
-                        >
-                            {radio.name}
-                        </ToggleButton>
-                    ))}
-                </ButtonGroup>
-            </div>
-            <div className="container buybtn">
-                <Button value={buyAmt} onClick={incAmt}>
-                    x{buyAmt}
-                </Button>
-            </div>
+                <div className="container buybtn">
+                    <Button value={buyAmt} onClick={incAmt}>
+                        x{buyAmt}
+                    </Button>
+                </div>
 
-            {renderSectorList}
-        </div>
+                {renderSectorList}
+            </div>
+        </>
     );
 }
 

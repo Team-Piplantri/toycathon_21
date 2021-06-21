@@ -110,7 +110,11 @@ class SpecialModeIndustry(models.Model):
     name = models.CharField(max_length=56)
     sector = models.IntegerField(default=0)
     weightage = models.DecimalField(decimal_places=2,max_digits=2)
+    front_end_id = models.IntegerField(default=0)
     alert = models.CharField(max_length=56,null=True,blank=True)
+
+    def __str__(self):
+        return f"{self.name}"
 
 
 class SpecialModeParameter(models.Model):
@@ -118,11 +122,14 @@ class SpecialModeParameter(models.Model):
     Model for Special Mode Parameters
     """
     user = models.ForeignKey(UserInfo,on_delete=models.CASCADE)
-    industry = models.ForeignKey(SpecialModeIndustry,on_delete=models.CASCADE)
+    industry = models.ForeignKey(SpecialModeIndustry,on_delete=models.CASCADE,related_name='params')
     slider1 = models.IntegerField(default=1)
     slider2 = models.IntegerField(default=1)
     slider3 = models.IntegerField(default=1)
     slider4 = models.IntegerField(default=1)
+
+    def __str__(self):
+        return f"User:{self.user},Industry:{self.industry}"
     
 
 

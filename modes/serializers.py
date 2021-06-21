@@ -42,3 +42,15 @@ class IdleClickerParameterSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.IdleClickerParameter
         fields = '__all__'
+
+
+class SpecialModeIndustrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.SpecialModeIndustry
+        fields = '__all__'
+
+
+class SpecialModeParameterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.SpecialModeParameter
+        fields = '__all__' 
