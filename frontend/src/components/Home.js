@@ -7,7 +7,6 @@ import Stats from "./Stats";
 import axiosInstance from "../axiosApi";
 import Chanbot from "./ChanBot";
 
-
 const Home = () => {
     return ( 
         <>

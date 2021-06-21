@@ -1,5 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
+import { Redirect } from 'react-router-dom';
 import { Row, Col, Button, Modal, Badge, ProgressBar, ButtonGroup, ToggleButton } from "react-bootstrap";
+
+
+import UserContext from '../UserContext';
 
 import axiosInstance from "../axiosApi";
 
@@ -18,6 +22,9 @@ function IdleClicker() {
     const [paramsList, setParamsList] = useState();
 
     const [radioValue, setRadioValue] = useState('1');
+
+    const userLogValue = useContext(UserContext);
+
 
     const radios = [
         { name: 'Primary', value: '1' },
@@ -272,77 +279,84 @@ function IdleClicker() {
         }
     }
 
-    return (
-        <>
-            {showStats ? (
-                <>
-                    <Stats
-                        show={showStats}
-                        onHide={() => setShowStats(false)}
-                    />
-                </>
-            ) : (
-                <></>
-            )}
-            {showManagers ? (
-                <>
-                    <Managers
-                        show={showManagers}
-                        onHide={() => setShowManagers(false)}
-                    />
-                </>
-            ) : (
-                <></>
-            )}
-            <div>
-                <div
-                    style={{
-                        backgroundColor: "chartreuse",
-                        textAlign: "center",
-                        padding: "1.5% 0",
-                    }}
-                >
-                    <Button onClick={() => setShowStats(true)} style={{ width: "85px" }}>Stats</Button>
+
+    if (!userLogValue.value) {
+        return (<Redirect to='/login/' />);
+    }
+    else {
+
+        return (
+            <>
+                {showStats ? (
+                    <>
+                        <Stats
+                            show={showStats}
+                            onHide={() => setShowStats(false)}
+                        />
+                    </>
+                ) : (
+                    <></>
+                )}
+                {showManagers ? (
+                    <>
+                        <Managers
+                            show={showManagers}
+                            onHide={() => setShowManagers(false)}
+                        />
+                    </>
+                ) : (
+                    <></>
+                )}
+                <div>
                     <div
                         style={{
+                            backgroundColor: "chartreuse",
                             textAlign: "center",
-                            display: "inline-block ",
-                            width: "50%",
+                            padding: "1.5% 0",
                         }}
                     >
-                        952,100,111
+                        <Button onClick={() => setShowStats(true)} style={{ width: "85px" }}>Stats</Button>
+                        <div
+                            style={{
+                                textAlign: "center",
+                                display: "inline-block ",
+                                width: "50%",
+                            }}
+                        >
+                            952,100,111
+                        </div>
+                        <div style={{ textAlign: "right", display: "inline-block" }}>
+                            <Button onClick={() => setShowManagers(true)} style={{ width: "85px" }}>Managers</Button>
+                        </div>
                     </div>
-                    <div style={{ textAlign: "right", display: "inline-block" }}>
-                        <Button onClick={() => setShowManagers(true)} style={{ width: "85px" }}>Managers</Button>
+                    <div>
+                        <ButtonGroup toggle>
+                            {radios.map((radio, idx) => (
+                                <ToggleButton
+                                    key={idx}
+                                    type="radio"
+                                    variant="secondary"
+                                    name="radio"
+                                    value={radio.value}
+                                    checked={radioValue === radio.value}
+                                    onChange={handleSector}
+                                >
+                                    {radio.name}
+                                </ToggleButton>
+                            ))}
+                        </ButtonGroup>
                     </div>
-                </div>
-                <div>
-                    <ButtonGroup toggle>
-                        {radios.map((radio, idx) => (
-                            <ToggleButton
-                                key={idx}
-                                type="radio"
-                                variant="secondary"
-                                name="radio"
-                                value={radio.value}
-                                checked={radioValue === radio.value}
-                                onChange={handleSector}
-                            >
-                                {radio.name}
-                            </ToggleButton>
-                        ))}
-                    </ButtonGroup>
-                </div>
-                <div className="container buybtn">
-                    <Button value={buyAmt} onClick={incAmt}>
-                        x{buyAmt}
-                    </Button>
-                </div>
+                    <div className="container buybtn">
+                        <Button value={buyAmt} onClick={incAmt}>
+                            x{buyAmt}
+                        </Button>
+                    </div>
 
-                {renderSectorList}
-            </div>
-        </>
-    );
+                    {renderSectorList}
+                </div>
+            </>
+        );
+    }
 }
 
 export default IdleClicker;
