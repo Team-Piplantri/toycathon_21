@@ -8,6 +8,7 @@ import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import SingleQuiz from "./components/SingleQuiz";
 import MultipleQuiz from "./components/MultipleQuiz";
+import IdleClicker from "./components/IdleClicker";
 
 import UserContext from "./UserContext";
 
@@ -52,6 +53,7 @@ class App extends Component {
               <Route exact path={"/logout/"} component={Logout} />
               <Route exact path={"/single-quiz/"} component={SingleQuiz} />
               <Route exact path={"/multiple-quiz/"} component={MultipleQuiz} />
+              <Route exact path={"/idle-clicker/"} component={IdleClicker} />
               <Route path={"/"} onEnter={requireAuth} component={Home} />
             </Switch>
           </main>

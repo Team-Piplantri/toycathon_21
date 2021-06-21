@@ -30,3 +30,15 @@ class ChanBotSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.ChanBot
         fields = '__all__'
+
+
+class IdleClickerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.IdleClickerIndustry
+        fields = '__all__'
+
+
+class IdleClickerParameterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.IdleClickerParameter
+        fields = '__all__'

@@ -14,4 +14,7 @@ urlpatterns=[
     #ChanBot
     path('chan-quote/',views.ChanBotView.as_view()), # Only GET
 
+    #IdleClicker
+    path('idle-clicker-industry/<int:sector>/',views.IdleClickerIndustryView.as_view()),
+    path('idle-clicker-params/',views.IdleClickerParameterView.as_view()),
 ]

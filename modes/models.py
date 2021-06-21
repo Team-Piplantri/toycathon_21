@@ -68,20 +68,30 @@ class ChanBot(models.Model):
 
 
 class IdleClickerIndustry(models.Model):
+    """
+    Model for IdleClicker Industry
+    """
     industry = models.CharField(max_length=56)
     sector = models.IntegerField(default=0)
     image = models.URLField()
+    unit_industry_income = models.IntegerField(default=0)
     industry_number = models.IntegerField(default=0)
     manager_name = models.CharField(max_length=56)
     manager_cost = models.IntegerField()
 
+    def __str__(self):
+        return f"{self.industry}"[:20]
+
 
 class IdleClickerParameter(models.Model):
+    """
+    Model for the IdleClicker User
+    """
     user = models.ForeignKey(UserInfo,on_delete=models.CASCADE)
     industry = models.ForeignKey(IdleClickerIndustry,on_delete=models.CASCADE)
     unlocked = models.BooleanField(default=False) # Industry 1 is always Unlocked, Rest are Locked
     current_quantity = models.IntegerField(default=0) # Industry 1, default is 1
-    last_buy_time = models.DateTimeField()
+    last_buy_time = models.DateTimeField(auto_now=True)
     quantity_bought = models.IntegerField()
     industry_income = models.BigIntegerField()
     managed = models.BooleanField(default=False) # Buy Manager to Unlock
@@ -89,6 +99,31 @@ class IdleClickerParameter(models.Model):
     next_ten_buy = models.BigIntegerField()
     next_hundred_buy = models.BigIntegerField()
 
+    def __str__(self):
+        return f"User:{self.user},Industry:{self.industry}"
+
+
+class SpecialModeIndustry(models.Model):
+    """
+    Model for Special Mode Industry
+    """
+    name = models.CharField(max_length=56)
+    sector = models.IntegerField(default=0)
+    weightage = models.DecimalField(decimal_places=2,max_digits=2)
+    alert = models.CharField(max_length=56,null=True,blank=True)
+
+
+class SpecialModeParameter(models.Model):
+    """
+    Model for Special Mode Parameters
+    """
+    user = models.ForeignKey(UserInfo,on_delete=models.CASCADE)
+    industry = models.ForeignKey(SpecialModeIndustry,on_delete=models.CASCADE)
+    slider1 = models.IntegerField(default=1)
+    slider2 = models.IntegerField(default=1)
+    slider3 = models.IntegerField(default=1)
+    slider4 = models.IntegerField(default=1)
+    
 
 
 
