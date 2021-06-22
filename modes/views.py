@@ -183,16 +183,62 @@ class SpecialModeParameterView(APIView):
         """
         Returns the Score
         """
-        # p1 = 0
-        # p2 = 0
-        # p3 = 0
-        # p4 = 0
-        # primary_list = SpecialModeParameter.objects.filter(user=request.user)
-        # for i in primary_list:
-        #     p1+= i.weightage * i.params.slider1
-        #     p2+= i.weightage * i.params.slider2
-        #     p3+= i.weightage * i.params.slider3
-        #     p4+= i.weightage * i.params.slider4
+        # w11 = 0.35
+        # w12 = 0.3
+        # w13 = 0.15
+        # w14 = 0.2
+
+        # w21 = 0.3
+        # w22 = 0.35
+        # w23 = 0.15
+        # w24 = 0.2
+
+        # w31 = 0.25
+        # w32 = 0.35
+        # w33 = 0.15
+        # w34 = 0.25
+
+        # sum_slider_11 = 0
+        # sum_slider_12 = 0
+        # sum_slider_13 = 0
+        # sum_slider_14 = 0
+
+        # sum_slider_21 = 0
+        # sum_slider_22 = 0
+        # sum_slider_23 = 0
+        # sum_slider_24 = 0
+
+        # sum_slider_31 = 0
+        # sum_slider_32 = 0
+        # sum_slider_33 = 0
+        # sum_slider_34 = 0
+
+        # query_list = SpecialModeParameter.objects.filter(user=request.user)
+        # for i in query_list:
+        #     if(i.industry.sector==1):
+        #         sum_slider_11+=((i.slider1)*w11)
+        #         sum_slider_12+=((i.slider2)*w12)
+        #         sum_slider_13+=((i.slider3)*w13)
+        #         sum_slider_14+=((i.slider4)*w14)
+        #     if(i.industry.sector==2):
+        #         sum_slider_21+=((i.slider1)*w21)
+        #         sum_slider_22+=((i.slider2)*w22)
+        #         sum_slider_23+=((i.slider3)*w23)
+        #         sum_slider_24+=((i.slider4)*w24)
+        #     if(i.industry.sector==3):
+        #         sum_slider_31+=((i.slider1)*w31)
+        #         sum_slider_32+=((i.slider2)*w32)
+        #         sum_slider_33+=((i.slider3)*w33)
+        #         sum_slider_34+=((i.slider4)*w34)
+        
+        # industry_list = SpecialModeIndustry.objects.all()
+        # for i in industry_list:
+        #     if(i.sector==1):
+        #         pass
+        #     if(i.sector==2):
+        #         pass
+        #     if(i.sector==3):
+        #         pass
 
 
         return Response(data={"value":"100"},status=status.HTTP_200_OK)
