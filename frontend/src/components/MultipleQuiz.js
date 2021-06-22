@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col,Button } from "react-bootstrap";
 import { Redirect } from 'react-router-dom';
 
 import UserContext from '../UserContext';
@@ -129,6 +129,9 @@ const MultipleQuiz = () => {
 
     return (
       <div>
+          <div className="bg"></div>
+          <div className="bg bg2"></div>
+          <div className="bg bg3"></div>
         <div style={{ textAlign: "center", margin: "2%" }}>
           <span id="progress0" className="dot"></span>
           <span id="progress1" className="dot"></span>
@@ -141,11 +144,11 @@ const MultipleQuiz = () => {
           <span id="progress8" className="dot"></span>
           <span id="progress9" className="dot"></span>
         </div>
-        <div style={{ backgroundColor: "aqua", marginTop: "3%", padding: "2% 3% 2% 3%", }} className="container">{currentQues.ques_text}</div>
+        <div style={{ backgroundColor: "aqua", marginTop: "3%", padding: "2% 3% 2% 3%", }} className="container content">{currentQues.ques_text}</div>
         <div style={{ marginTop: "5%" }} className="container">
           <Row>
             <Col style={{ marginBottom: "3%" }} sm={12} md={6}>
-              <button
+              <Button
                 style={{
                   width: "100%",
                   height: "100%",
@@ -155,12 +158,13 @@ const MultipleQuiz = () => {
                 onClick={handleClick}
                 name="1"
                 id="opt1"
+                variant="outline-dark"
               >
                 {currentQues.option1}
-              </button>
+              </Button>
             </Col>
             <Col style={{ marginBottom: "3%" }} sm={12} md={6}>
-              <button
+              <Button
                 style={{
                   width: "100%",
                   height: "100%",
@@ -170,12 +174,13 @@ const MultipleQuiz = () => {
                 onClick={handleClick}
                 name="2"
                 id="opt2"
+                variant="outline-dark"
               >
                 {currentQues.option2}
-              </button>
+              </Button>
             </Col>
             <Col style={{ marginBottom: "3%" }} sm={12} md={6}>
-              <button
+              <Button
                 style={{
                   width: "100%",
                   height: "100%",
@@ -185,12 +190,13 @@ const MultipleQuiz = () => {
                 onClick={handleClick}
                 name="3"
                 id="opt3"
+                variant="outline-dark"
               >
                 {currentQues.option3}
-              </button>
+              </Button>
             </Col>
             <Col style={{ marginBottom: "3%" }} sm={12} md={6}>
-              <button
+              <Button
                 style={{
                   width: "100%",
                   height: "100%",
@@ -200,9 +206,10 @@ const MultipleQuiz = () => {
                 onClick={handleClick}
                 name="4"
                 id="opt4"
+                variant="outline-dark"
               >
                 {currentQues.option4}
-              </button>
+              </Button>
             </Col>
           </Row>
           <div
@@ -222,7 +229,7 @@ const MultipleQuiz = () => {
             className="container"
             style={{ backgroundColor: "aquamarine" }}
           >
-            <button id="changeNextButton" onClick={changeNextQuestion}>Next</button>
+            <Button id="changeNextButton" onClick={changeNextQuestion}>Next</Button>
           </div>
         </div>
       </div>

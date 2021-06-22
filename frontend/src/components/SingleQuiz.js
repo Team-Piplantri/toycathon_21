@@ -14,7 +14,7 @@ const SingleQuiz = () => {
     ques_image: "",
     ques_text: ""
   }
-
+  const [score, setScore] = useState(0);
   const [quesList, setQuesList] = useState([]);
   const [quesCount, setQuesCount] = useState(0);
   const [currentQues, setCurrentQues] = useState(initialQuesObj);
@@ -55,8 +55,10 @@ const SingleQuiz = () => {
       else if (answerSelected == 3) {
         setTertiaryStyle("success");
       }
+      setScore((prevScore) => prevScore + 10);
     }
     else {
+      setScore((prevScore) => prevScore - 5);
       if (currentQues.answer == 1) {
         setPrimaryStyle("success");
       }
@@ -101,6 +103,30 @@ const SingleQuiz = () => {
     setCurrentQues(quesList[currentCount]);
   }
 
+  var timeleft = 120;
+  var timeleftstr = "";
+  function timer() {
+    document.getElementById("startbtn").setAttribute("disabled", "");
+    var timerid = setInterval(function () {
+      if (timeleft <= 0) {
+        clearInterval(timerid);
+      } else {
+        timeleft -= 1;
+        var minutes = Math.floor(timeleft / 60);
+        var seconds = timeleft % 60;
+        var secondsstr = "";
+        if (seconds < 10) {
+          secondsstr = "0" + JSON.stringify(seconds);
+        } else {
+          secondsstr = JSON.stringify(seconds);
+        }
+        timeleftstr = JSON.stringify(minutes) + ":" + secondsstr;
+      }
+      console.log(timeleftstr);
+      document.getElementById("timer").innerHTML = "Time Left-" + timeleftstr;
+    }, 1000);
+  }
+
   if (!userLogValue.value) {
     return (<Redirect to='/login/' />);
   }
@@ -110,13 +136,13 @@ const SingleQuiz = () => {
       <div style={{ backgroundColor: "aqua", height: "fit-content" }} className="container" >
         <div style={{ textAlign: "right" }}>
           <h1>
-            <Badge style={{ width: "200px" }} variant="secondary">
-              Timer-0:00
+            <Badge style={{ width: "250px" }} id="timer" variant="secondary">
+              Timer
             </Badge>
           </h1>
           <h1>
-            <Badge style={{ width: "200px" }} variant="secondary">
-              Score-0
+            <Badge style={{ width: "250px" }} variant="secondary">
+              Score- {score}
             </Badge>
           </h1>
         </div>
@@ -135,7 +161,9 @@ const SingleQuiz = () => {
           ></img>
           <h3 id="img-title">{currentQues.ques_text}</h3>
         </div>
-
+        <Button id="startbtn" onClick={timer}>
+        Start
+      </Button>
         <div style={{ textAlign: "center" }}>
           <Button onClick={handleClick} name='1' className="choicebtn" id="primarybtn" size="lg" variant={primaryBtnStyle}>
             Primary
