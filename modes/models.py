@@ -10,6 +10,7 @@ class SingleWordQuiz(models.Model):
     ques_image = models.URLField(null=True,blank=True)
     answer = models.IntegerField(default=0) # Primary - 1, Secondary - 2, Tertiary - 3
     explanation = models.CharField(max_length=512)
+    difficulty = models.IntegerField(default=1) # Easy:1, Medium:2, Hard:3
 
     def __str__(self):
         return f"Answer:{self.answer}, ID:{self.id}"
@@ -38,6 +39,7 @@ class MultipleQuiz(models.Model):
     option4 = models.CharField(max_length=512)
     answer = models.IntegerField(default=0)
     explanation = models.CharField(max_length=512)
+    difficulty = models.IntegerField(default=1) # Easy:1, Medium:2, Hard:3
 
     def __str__(self):
         ques = self.ques_text[:30]

@@ -3,6 +3,7 @@ from rest_framework import status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 import random
+from itertools import chain
 
 from .models import SingleWordQuiz,SingleWordQuizAnswer,MultipleQuiz,MultipleQuizAnswer,ChanBot,IdleClickerIndustry,IdleClickerParameter,SpecialModeIndustry,SpecialModeParameter
 from .serializers import *
@@ -16,8 +17,18 @@ class ListSingleQuizQuestionsView(APIView):
         """
         Returns the List of Questions for Single Quiz
         """
-        questions = SingleWordQuiz.objects.all()
-        serializer = SingleWordQuizSerializer(questions,many=True)
+        questions_easy = SingleWordQuiz.objects.filter(difficulty=1)
+        random_ques_easy = random.choices(questions_easy,k=5)
+
+        questions_medium = SingleWordQuiz.objects.filter(difficulty=2)
+        random_ques_med = random.choices(questions_medium,k=3)
+
+        questions_hard = SingleWordQuiz.objects.filter(difficulty=3)
+        random_ques_hard = random.choices(questions_hard,k=2)
+
+        final_list = list(chain(random_ques_easy, random_ques_med, random_ques_hard))
+
+        serializer = SingleWordQuizSerializer(final_list,many=True)
         return Response(data=serializer.data,status=status.HTTP_200_OK)
 
 
@@ -52,8 +63,18 @@ class ListMultipleQuizView(APIView):
         """
         Returns the List of Questions for Multiple Quiz
         """
-        questions = MultipleQuiz.objects.all()
-        serializer = MultipleQuizSerializer(questions,many=True)
+        questions_easy = MultipleQuiz.objects.filter(difficulty=1)
+        random_ques_easy = random.choices(questions_easy,k=5)
+
+        questions_medium = MultipleQuiz.objects.filter(difficulty=2)
+        random_ques_med = random.choices(questions_medium,k=3)
+
+        questions_hard = MultipleQuiz.objects.filter(difficulty=3)
+        random_ques_hard = random.choices(questions_hard,k=2)
+
+        final_list = list(chain(random_ques_easy, random_ques_med, random_ques_hard))
+
+        serializer = MultipleQuizSerializer(final_list,many=True)
         return Response(data=serializer.data,status=status.HTTP_200_OK)
 
 
