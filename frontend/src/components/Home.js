@@ -60,9 +60,7 @@ const Home = () => {
                   <Card.Body>
                     <Card.Title>Guess The Sector</Card.Title>
                     <Card.Text>
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
+                    This game consists of quiz app for guessing the sectors.
                     </Card.Text>
                     <div className="playbtnhome">
                     <NavLink to="/single-quiz/" className="btn btn-primary btn-sm">Play</NavLink>
@@ -77,8 +75,7 @@ const Home = () => {
                   <Card.Body>
                     <Card.Title>Who Will Become The Economist</Card.Title>
                     <Card.Text>
-                      This card has supporting text below as a natural lead-in
-                      to additional content.
+                    In detailed questions based on all the economic sectors with in-answer explaination.
                     </Card.Text>
                     <div className="playbtnhome">
                       <NavLink to="/multiple-quiz/" className="btn btn-primary btn-sm">Play</NavLink>
@@ -93,10 +90,7 @@ const Home = () => {
                   <Card.Body>
                     <Card.Title>Idle Clicker:Country Edition</Card.Title>
                     <Card.Text>
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This card has even
-                      longer content than the first to show that equal height
-                      action.
+                    Learn about the interdependence of economic sectors in this game mode where you click your way to your country's economic prosperity!
                     </Card.Text>
                     <div className="playbtnhome">
                     <NavLink to="/idle-clicker/" className="btn btn-primary btn-sm">Play</NavLink>
@@ -113,9 +107,7 @@ const Home = () => {
                   <Card.Body>
                     <Card.Title>Country Simulator</Card.Title>
                     <Card.Text>
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
+                    You have money you have knowledge now show your economic skills and make your country wealthy.
                     </Card.Text>
                     <div className="playbtnhome">
                     <NavLink to="/special-mode/" className="btn btn-primary btn-sm">Play</NavLink>
