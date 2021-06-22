@@ -8,6 +8,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from .serializers import CustomTokenObtainPairSerializer,CustomUserSerializer
 from .models import UserInfo
+from modes.models import IdleClickerParameter,IdleClickerIndustry,SpecialModeIndustry,SpecialModeParameter
 
 
 class CustomObtainTokenPairView(TokenObtainPairView):
@@ -38,6 +39,14 @@ class CustomUserCreate(APIView):
                     currency=currency,
                     gdp = net_gdp
                 )
+                idleclicker_qs = IdleClickerIndustry.objects.all()
+                for i in idleclicker_qs:
+                    obj = IdleClickerParameter.objects.create(user=user_info,industry=i)
+                
+                specialmode_qs = SpecialModeIndustry.objects.all()
+                for i in specialmode_qs:
+                    obj = SpecialModeParameter.objects.create(user=user_info,industry=i)
+                	
                 data = serializer.data
                 return Response(data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

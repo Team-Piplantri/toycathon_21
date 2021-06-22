@@ -79,14 +79,23 @@
     margin-bottom: 2%;
   }
   
-  #float-btn{
+  #float-btn {
     right: 10%;
     position: fixed;
     bottom: 10%;
-    height: 60px;
-    width: 60px;
-    border-radius: 50%; 
-    background-color: blue;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: rgb(74, 74, 255);
+    overflow: hidden;
+  }
+  
+  #float-btn img {
+    display: inline-block;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+    border-radius: 50%;
   }
   
   .bochak{
