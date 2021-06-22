@@ -60,7 +60,7 @@ class ChanBot(models.Model):
     """
     Model for Chanakya Non-Interactive Bot
     """
-    quote = models.CharField(max_length=128)
+    quote = models.CharField(max_length=512)
 
     def __str__(self):
         quote = self.quote[:30]
@@ -92,12 +92,12 @@ class IdleClickerParameter(models.Model):
     unlocked = models.BooleanField(default=False) # Industry 1 is always Unlocked, Rest are Locked
     current_quantity = models.IntegerField(default=0) # Industry 1, default is 1
     last_buy_time = models.DateTimeField(auto_now=True)
-    quantity_bought = models.IntegerField()
-    industry_income = models.BigIntegerField()
+    quantity_bought = models.IntegerField(default=0)
+    industry_income = models.BigIntegerField(default=0)
     managed = models.BooleanField(default=False) # Buy Manager to Unlock
-    next_one_buy = models.BigIntegerField()
-    next_ten_buy = models.BigIntegerField()
-    next_hundred_buy = models.BigIntegerField()
+    next_one_buy = models.BigIntegerField(default=0)
+    next_ten_buy = models.BigIntegerField(default=0)
+    next_hundred_buy = models.BigIntegerField(default=0)
 
     def __str__(self):
         return f"User:{self.user},Industry:{self.industry}"
