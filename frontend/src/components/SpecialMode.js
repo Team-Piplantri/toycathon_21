@@ -7,21 +7,23 @@ import axiosInstance from "../axiosApi";
 import UserContext from '../UserContext';
 
 
-// 1 Agriculture
-// 2 Mining
-// 3 Fishing
-// 4 Logging
-// 5 Oil Drilling
-// 6 FMCG
-// 7 Crude Oil
-// 8 Iron & Steel
-// 9 Textiles
-// 10 Energy Prod
-// 11 Health
-// 12 Tourism
-// 13 Banking
-// 14 Transport
-// 15 IT
+// 1 Agriculture 0.35
+// 2 Mining 0.25
+// 3 Fishing 0.1
+// 4 Logging 0.1
+// 5 Oil Drilling 0.2
+
+// 6 FMCG 0.3
+// 7 Crude Oil 0.15
+// 8 Iron & Steel 0.15
+// 9 Textiles 0.1
+// 10 Energy Prod 0.3
+
+// 11 Health 0.45
+// 12 Tourism 0.05
+// 13 Banking 0.2
+// 14 Transport 0.1
+// 15 IT 0.2
 
 
 function SpecialMode() {
@@ -231,10 +233,24 @@ function SpecialMode() {
 
         return (
             <div>
+                <div className="area" >
+                    <ul className="circles">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
                 <div
                     className="container"
                     style={{
-                        backgroundColor: "lightblue",
+                        // backgroundColor: "lightblue",
                         marginTop: "2%",
                         textAlign: "center",
                         padding: "2%",
@@ -378,7 +394,7 @@ function SpecialMode() {
                         </Col>
                     </Row>
                 </div>
-                <div className="container">
+                {/* <div className="container">
                     <Row noGutters>
                         <Col sm={12} md={4}>
                             Res1
@@ -390,7 +406,7 @@ function SpecialMode() {
                             Res1
                         </Col>
                     </Row>
-                </div>
+                </div> */}
             </div>
         );
     }
