@@ -6,10 +6,10 @@ class SingleWordQuiz(models.Model):
     """
     Model for Matching 1,2,3 with Image or Question
     """
-    ques_text = models.CharField(max_length=128,null=True,blank=True)
+    ques_text = models.CharField(max_length=512,null=True,blank=True)
     ques_image = models.URLField(null=True,blank=True)
     answer = models.IntegerField(default=0) # Primary - 1, Secondary - 2, Tertiary - 3
-    explanation = models.CharField(max_length=128)
+    explanation = models.CharField(max_length=512)
 
     def __str__(self):
         return f"Answer:{self.answer}, ID:{self.id}"
@@ -31,13 +31,13 @@ class MultipleQuiz(models.Model):
     """
     Model for 4 Options Quiz
     """
-    ques_text = models.CharField(max_length=128)
-    option1 = models.CharField(max_length=56)
-    option2 = models.CharField(max_length=56)
-    option3 = models.CharField(max_length=56)
-    option4 = models.CharField(max_length=56)
+    ques_text = models.CharField(max_length=512)
+    option1 = models.CharField(max_length=512)
+    option2 = models.CharField(max_length=512)
+    option3 = models.CharField(max_length=512)
+    option4 = models.CharField(max_length=512)
     answer = models.IntegerField(default=0)
-    explanation = models.CharField(max_length=56)
+    explanation = models.CharField(max_length=512)
 
     def __str__(self):
         ques = self.ques_text[:30]
