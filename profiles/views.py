@@ -21,19 +21,27 @@ class CustomUserCreate(APIView):
 
     def post(self, request, format='json'):        
         currency = request.data.get("currency",None)
-        q1 = int(request.data.get("q1",None))
-        q2 = int(request.data.get("q2",None))
-        q3 = int(request.data.get("q3",None))
-        q4 = int(request.data.get("q4",None))
-        q5 = int(request.data.get("q5",None))
+        q1 = int(request.data.get("q1",0))
+        q2 = int(request.data.get("q2",0))
+        q3 = int(request.data.get("q3",0))
+        q4 = int(request.data.get("q4",0))
+        q5 = int(request.data.get("q5",0))
+            
+        email = request.data.get("email",None)
 
         serializer = CustomUserSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
             if user:
+                try:
+                    if(email):
+                        user.email = email
+                        user.save()
+                except:
+                    pass
                 # Initial GDP Calculation
                 gdp = q1+q2+q3+q4+q5
-                net_gdp = (1-(0.05*gdp))*50000000
+                net_gdp = (1-(0.05*gdp))*500000
                 user_info,created = UserInfo.objects.get_or_create(
                     user=user,
                     currency=currency,

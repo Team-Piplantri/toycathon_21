@@ -58,7 +58,7 @@ function SpecialMode() {
             setSlideButtonValue2(response.data.slider2);
             setSlideButtonValue3(response.data.slider3);
             setSlideButtonValue4(response.data.slider4);
-            const responseScore = await axiosInstance.get("/specialmode-params/");
+            const responseScore = await axiosInstance.get("/modes/specialmode-params/");
             setCurrentScore(responseScore.data.value);
         }
         requestData();
@@ -297,7 +297,6 @@ function SpecialMode() {
                             </div>
                         </Col>
                         <Col sm={12} md={4} style={{ textAlign: "center" }}>
-                            Score: {currentScore}
                             <Button onClick={handleViewScore} >Refresh Score</Button>
                         </Col>
                     </Row>
@@ -393,6 +392,11 @@ function SpecialMode() {
                                     </Col>
                                 </Row>
                             </div>
+                        </Col>
+                        <Col sm={12} md={4}>
+                            Score: {currentScore}
+                            Stars: {stars}
+                            {/* <i className="fas fa-star"></i> */}
                         </Col>
                     </Row>
                 </div>
