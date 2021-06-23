@@ -183,65 +183,62 @@ class SpecialModeParameterView(APIView):
         """
         Returns the Score
         """
-        # w11 = 0.35
-        # w12 = 0.3
-        # w13 = 0.15
-        # w14 = 0.2
+        ind_weight_prim=[0.35,0.25,0.2,0.1,0.1]
 
-        # w21 = 0.3
-        # w22 = 0.35
-        # w23 = 0.15
-        # w24 = 0.2
+        ind_weight_sec=[0.3,0.15,0.15,0.1,0.3]
 
-        # w31 = 0.25
-        # w32 = 0.35
-        # w33 = 0.15
-        # w34 = 0.25
+        ind_weight_tert=[0.45,0.2,0.1,0.05,0.2]
 
-        # sum_slider_11 = 0
-        # sum_slider_12 = 0
-        # sum_slider_13 = 0
-        # sum_slider_14 = 0
+        param_wt_prim=[0.35,0.3,0.15,0.2]
 
-        # sum_slider_21 = 0
-        # sum_slider_22 = 0
-        # sum_slider_23 = 0
-        # sum_slider_24 = 0
+        param_wt_sec=[0.3,0.35,0.15,0.2]
 
-        # sum_slider_31 = 0
-        # sum_slider_32 = 0
-        # sum_slider_33 = 0
-        # sum_slider_34 = 0
+        param_wt_tert=[0.25,0.15,0.35,0.25]
 
-        # query_list = SpecialModeParameter.objects.filter(user=request.user)
-        # for i in query_list:
-        #     if(i.industry.sector==1):
-        #         sum_slider_11+=((i.slider1)*w11)
-        #         sum_slider_12+=((i.slider2)*w12)
-        #         sum_slider_13+=((i.slider3)*w13)
-        #         sum_slider_14+=((i.slider4)*w14)
-        #     if(i.industry.sector==2):
-        #         sum_slider_21+=((i.slider1)*w21)
-        #         sum_slider_22+=((i.slider2)*w22)
-        #         sum_slider_23+=((i.slider3)*w23)
-        #         sum_slider_24+=((i.slider4)*w24)
-        #     if(i.industry.sector==3):
-        #         sum_slider_31+=((i.slider1)*w31)
-        #         sum_slider_32+=((i.slider2)*w32)
-        #         sum_slider_33+=((i.slider3)*w33)
-        #         sum_slider_34+=((i.slider4)*w34)
-        
-        # industry_list = SpecialModeIndustry.objects.all()
-        # for i in industry_list:
-        #     if(i.sector==1):
-        #         pass
-        #     if(i.sector==2):
-        #         pass
-        #     if(i.sector==3):
-        #         pass
+        sector_wt=[0.12,0.28,0.6]
 
+        unit_ind_wt_list=[]
+        query_list = SpecialModeParameter.objects.filter(user=request.user.info)
 
-        return Response(data={"value":"100"},status=status.HTTP_200_OK)
+        for i in range(0,len(ind_weight_prim)):
+            unit_ind_wt=0
+            unit_ind_wt+=((param_wt_prim[0]*(query_list[i].slider1))+(param_wt_prim[1]*(query_list[i].slider2))+(param_wt_prim[2]*(query_list[i].slider3))+(param_wt_prim[3]*(query_list[i].slider4)))
+            unit_ind_wt_list.append(unit_ind_wt*ind_weight_prim[i])
+
+        for i in range(0,len(ind_weight_sec)):
+            unit_ind_wt=0
+            unit_ind_wt+=((param_wt_sec[0]*(query_list[i+5].slider1))+(param_wt_sec[1]*(query_list[i+5].slider2))+(param_wt_sec[2]*(query_list[i+5].slider3))+(param_wt_sec[3]*(query_list[i+5].slider4)))
+            unit_ind_wt_list.append(unit_ind_wt*ind_weight_sec[i])
+
+        for i in range(0,len(ind_weight_tert)):
+            unit_ind_wt=0
+            unit_ind_wt+=((param_wt_tert[0]*(query_list[i+10].slider1))+(param_wt_tert[1]*(query_list[i+10].slider2))+(param_wt_tert[2]*(query_list[i+10].slider3))+(param_wt_tert[3]*(query_list[i+10].slider4)))
+            unit_ind_wt_list.append(unit_ind_wt*ind_weight_tert[i])
+
+        total_score=0
+        for i in range(3):
+            sector_sum=0
+            for j in range(5):
+                sector_sum+=unit_ind_wt_list[(5*i)+j]
+            total_score+=(sector_sum*sector_wt[i])
+
+        stars = 0
+        if(total_score<2500):
+            stars = 0
+        elif(total_score>=2500 and total_score<3000):
+            stars = 1
+        elif(total_score>=3000 and total_score<3500):
+            stars = 2
+        elif(total_score>=3500 and total_score<4000):
+            stars = 3
+        elif(total_score>=4000 and total_score<4500):
+            stars = 4
+        elif(total_score>=4500):
+            stars = 5
+
+        total_score = round(total_score*100,2)
+
+        return Response(data={"value":total_score,'stars':stars},status=status.HTTP_200_OK)
 
     def post(self,request,format=None):
         """

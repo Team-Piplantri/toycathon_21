@@ -111,7 +111,7 @@ class SpecialModeIndustry(models.Model):
     """
     name = models.CharField(max_length=56)
     sector = models.IntegerField(default=0)
-    weightage = models.DecimalField(decimal_places=2,max_digits=2)
+    weightage = models.DecimalField(decimal_places=2,max_digits=2,null=True,blank=True)
     front_end_id = models.IntegerField(default=0)
     alert = models.CharField(max_length=56,null=True,blank=True)
 

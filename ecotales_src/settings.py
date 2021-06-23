@@ -62,7 +62,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=120),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=15), # Login again after 15 days   
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
@@ -87,11 +87,8 @@ EMAIL_HOST_PASSWORD = os.getenv('SENDGRID_API_KEY')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-# CORS_ALLOWED_ORIGINS = [
-#     "https://thearthashastra.herokuapp.com/",
-#     "http://127.0.0.1:8000",
-# ]
 
+# CORS_ALLOW_ALL_ORIGINS = True
 
 
 MIDDLEWARE = [

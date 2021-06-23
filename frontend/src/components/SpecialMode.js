@@ -30,6 +30,7 @@ function SpecialMode() {
     const [activeIndustry, setActiveIndustry] = useState(1);
     const [activeSector, setActiveSector] = useState(1);
     const [currentScore, setCurrentScore] = useState(0);
+    const [stars, setStars] = useState(0);
 
     const [button1, setButton1] = useState("Agriculture"); //Primary
     const [button2, setButton2] = useState("Mining");
@@ -220,8 +221,9 @@ function SpecialMode() {
     }
 
     const handleViewScore = async () => {
-        const responseScore = await axiosInstance.get("/specialmode-params/");
+        const responseScore = await axiosInstance.get("/modes/specialmode-params/");
         setCurrentScore(responseScore.data.value);
+        setStars(responseScore.data.stars);
     }
 
 
